@@ -1,0 +1,77 @@
+#SQL code for add,delete,update,count,sum,avg,joins
+-- create a table
+CREATE TABLE students (
+  id INTEGER PRIMARY KEY,
+  name varchar(20),
+  age INTEGER,
+  major varchar(20)
+);
+-- insert some values
+INSERT INTO students VALUES (1, 'arun', '20','biology');
+INSERT INTO students VALUES (2, 'jaya', '21','biology');
+INSERT INTO students VALUES (3, 'pathi', '21','biology');
+INSERT INTO students VALUES (4, 'aravinth', '20','computer science');
+INSERT INTO students VALUES (5, 'raja', '21','biology');
+INSERT INTO students VALUES (6, 'harsha', '23','arts');
+INSERT INTO students VALUES (7, 'varadhan', '24','computer science');
+INSERT INTO students VALUES (8, 'vanmesha', '23','arts');
+INSERT INTO students VALUES (9, 'dharun', '23','biology');
+INSERT INTO students VALUES (10, 'kamal', '22','arts');
+INSERT INTO students VALUES (11, 'raj', '23','biology');
+INSERT INTO students VALUES (12, 'kumar', '24','computer science');
+INSERT INTO students VALUES (13, 'andrew', '22','arts');
+INSERT INTO students VALUES (14, 'asif', '23','arts');
+INSERT INTO students VALUES (15, 'manoj', '22','biology');
+-- fetch some values
+ALTER TABLE  students add mobile varchar(20);
+update students set mobile=9876543210 where id=2;
+
+delete from students where id=3;
+
+select * from students where id between 4 and 7;
+select * from students where name in('arun','manoj');
+select * from students order by name asc;
+select * from students order by name desc;
+select count(id) from students where major='computer science';
+select avg(age) from students;
+select sum(id) from students;
+
+CREATE TABLE Books (
+  author_id INTEGER PRIMARY KEY,
+  book_name varchar(20)
+);
+INSERT INTO Books VALUES (1, 'rich dad poor dad');
+INSERT INTO Books VALUES (2, 'zero to one');
+INSERT INTO Books VALUES (3, 'The Battle for Your Mind');
+INSERT INTO Books VALUES (4, 'think and grow rich');
+INSERT INTO Books VALUES (5, 'psychology of money');
+INSERT INTO Books VALUES (6, 'inteligent investor');
+INSERT INTO Books VALUES (7, 'automatic millionaire');
+INSERT INTO Books VALUES (8, 'millionaire next door');
+INSERT INTO Books VALUES (9, '80 min MBA');
+INSERT INTO Books VALUES (10, 'power of habit');
+
+
+#INNER JOIN EXAMPLE
+SELECT a.id, a.name, b.book_name
+FROM students a
+INNER JOIN Books b
+ON a.id = b.author_id;
+
+#LEFT JOIN EXAMPLE
+SELECT b.author_id, b.book_name, a.name, a.major
+FROM Books b
+LEFT JOIN students a 
+ON b.author_id = a.id;
+
+#RIGHT JOIN EXAMPLE
+SELECT a.name, a.major,b.author_id, b.book_name
+FROM students a 
+RIGHT JOIN Books b
+ON a.id=b.author_id;
+
+#FULL JOIN EXAMPLE
+SELECT a.id,a.name,a.age,a.major,b.author_id, b.book_name
+FROM students a 
+RIGHT JOIN Books b
+ON a.id=b.author_id;
