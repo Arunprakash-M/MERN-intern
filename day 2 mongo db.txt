@@ -1,9 +1,6 @@
-
-
-MONGO DB !!!
-
+                                       MONGO DB
 use test
-switched to db test
+type db test
 db.testcollection . insert ( { ld: I } )
 db.testCollection.insert({Id:2, name: 'karthi', gender: 'm', age: '20'})
 db.testCollection.insert({Id:3, name: 'raghul', gender: 'm', age: '20'})
@@ -377,4 +374,3 @@ db.testCollection.find().sort({age:1})
   gender: 'm',
   age: '19'
 }
-
