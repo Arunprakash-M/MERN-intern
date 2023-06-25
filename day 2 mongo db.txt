@@ -1,6 +1,8 @@
                                        MONGO DB
-use test
-type db test
+                                      ----------
+-- use test
+-- type db test
+//insert
 db.testcollection . insert ( { ld: I } )
 db.testCollection.insert({Id:2, name: 'karthi', gender: 'm', age: '20'})
 db.testCollection.insert({Id:3, name: 'raghul', gender: 'm', age: '20'})
@@ -47,7 +49,7 @@ db.testCollection.find()
   gender: 'm',
   age: '30'
 }
-
+//update
 db.testCollection.updateOne({Id:1}, { $set: {name:'mith',gender:'m',age:'20'}})
 {
   _id: ObjectId("64916ba8c68ccf956353216c"),
@@ -91,6 +93,7 @@ db.testCollection.updateOne({Id:1}, { $set: {name:'mith',gender:'m',age:'20'}})
   gender: 'm',
   age: '30'
 }
+//insert many
 db.testCollection.insertMany([{Id:7, name: 'krishna', gender: 'm', age: '19'} , {Id:8, name: 'sanajai', gender: 'm', age: '20'} , {Id:9, name: 'mohan', gender: 'm', age: '19'}])
 db.testCollection.find()
 {
@@ -250,12 +253,8 @@ db.testCollection.find({'age' : {"$in" : ['30','19']} })
   name: 'jhon',
   gender: 'm',
   age: '30'
-}ś
-
-
-===============================================================================================================================
-
-
+}
+//sort
 db.testCollection.find().sort({age:1})
 
 
